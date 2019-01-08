@@ -18,9 +18,9 @@ class Category {
         self.color = colorOfCategory
     }
     
-    fileprivate func loadCategoryFromCoreData () -> [String : Category?] {
+    class func loadCategoryFromCoreData() -> [String : Category?] {
         
-        var categoryDictionary = [String : Category?]()
+        var categoryDictionary = [String : Category]()
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Categories")
         request.returnsObjectsAsFaults = false
@@ -35,7 +35,7 @@ class Category {
                     var tempNameOfCategories: String!
                     var tempColorOfCategories: UIColor!
                     
-                    if let nameCategory = result.value(forKey: "nameCategory") as? String {
+                    if let nameCategory = result.value(forKey: "categoryName") as? String {
                         tempNameOfCategories = nameCategory
                     }
                     if let colorData = result.value(forKey: "color") as? Data {
@@ -60,7 +60,7 @@ class Category {
         let context = appDelegate.persistentContainer.viewContext
         
         let newTask = NSEntityDescription.insertNewObject(forEntityName: "Categories", into: context)
-        newTask.setValue(self.name, forKey: "nameCategory")
+        newTask.setValue(self.name, forKey: "categoryName")
         let colorData = self.color.encode()
         newTask.setValue(colorData, forKey: "color")
         
@@ -79,14 +79,14 @@ class Category {
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Categories")
         request.returnsObjectsAsFaults = false
-        request.predicate = NSPredicate(format: "nameCategory == %@", self.name)
+        request.predicate = NSPredicate(format: "categoryName == %@", self.name)
         
         do {
             let results = try context.fetch(request)
             if results.count > 0 {
                 
                 let result = results[0] as! NSManagedObject
-                result.setValue(newCategory.name, forKey: "nameCategory")
+                result.setValue(newCategory.name, forKey: "categoryName")
                 let colorData = newCategory.color.encode()
                 result.setValue(colorData, forKey: "color")
                 do {

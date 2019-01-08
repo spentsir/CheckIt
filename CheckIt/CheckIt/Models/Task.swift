@@ -186,7 +186,7 @@ class Task {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
-        let newTask = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context)
+        let newTask = NSEntityDescription.insertNewObject(forEntityName: "Tasks", into: context)
         newTask.setValue(self.taskTitle, forKey: "taskTitle")
         newTask.setValue(Task.dateShouldBeDoneToString(date: self.completionDate), forKey: "dueDate")
         newTask.setValue(self.category?.name, forKey: "categoryName")

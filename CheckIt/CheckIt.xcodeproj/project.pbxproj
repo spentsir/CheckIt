@@ -14,9 +14,12 @@
 		BF22892E21E0840600D7B163 /* Anchor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF22892D21E0840600D7B163 /* Anchor+RGB.swift */; };
 		BF22893321E08EAC00D7B163 /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF22893121E08EAC00D7B163 /* TaskDataModel.xcdatamodeld */; };
 		BF22893621E08F2100D7B163 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF22893521E08F2100D7B163 /* Task.swift */; };
-		BF7528F421E093CF0021E517 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7528F321E093CF0021E517 /* DateHelper.swift */; };
 		BF7528FD21E152960021E517 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7528FC21E152960021E517 /* TaskTableViewController.swift */; };
 		BFA6614E21E15DF50074CE92 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6614D21E15DF50074CE92 /* Category.swift */; };
+		BFA6615121E1848E0074CE92 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6615021E1848E0074CE92 /* TaskTableViewCell.swift */; };
+		BFA6615521E20DF90074CE92 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6615421E20DF90074CE92 /* TaskDetailViewController.swift */; };
+		BFA6615721E20F000074CE92 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6615621E20F000074CE92 /* SettingsTableViewController.swift */; };
+		BFA6615921E2114B0074CE92 /* CATransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6615821E2114B0074CE92 /* CATransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +32,12 @@
 		BF22892D21E0840600D7B163 /* Anchor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Anchor+RGB.swift"; sourceTree = "<group>"; };
 		BF22893221E08EAC00D7B163 /* TaskDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel.xcdatamodel; sourceTree = "<group>"; };
 		BF22893521E08F2100D7B163 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		BF7528F321E093CF0021E517 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		BF7528FC21E152960021E517 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		BFA6614D21E15DF50074CE92 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		BFA6615021E1848E0074CE92 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		BFA6615421E20DF90074CE92 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		BFA6615621E20F000074CE92 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		BFA6615821E2114B0074CE92 /* CATransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CATransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 		BF22891621E0831900D7B163 /* CheckIt */ = {
 			isa = PBXGroup;
 			children = (
+				BFA6614F21E184540074CE92 /* Views */,
 				BF7528F021E092720021E517 /* Models */,
 				BF22893421E08F1300D7B163 /* Core Data */,
 				BF7528F521E099950021E517 /* View Controllers */,
@@ -77,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				BF22892D21E0840600D7B163 /* Anchor+RGB.swift */,
+				BFA6615821E2114B0074CE92 /* CATransition.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -84,8 +92,6 @@
 		BF22893421E08F1300D7B163 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				BF22893521E08F2100D7B163 /* Task.swift */,
-				BFA6614D21E15DF50074CE92 /* Category.swift */,
 				BF22893121E08EAC00D7B163 /* TaskDataModel.xcdatamodeld */,
 			);
 			path = "Core Data";
@@ -114,7 +120,8 @@
 		BF7528F021E092720021E517 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BF7528F321E093CF0021E517 /* DateHelper.swift */,
+				BF22893521E08F2100D7B163 /* Task.swift */,
+				BFA6614D21E15DF50074CE92 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -123,8 +130,18 @@
 			isa = PBXGroup;
 			children = (
 				BF7528FC21E152960021E517 /* TaskTableViewController.swift */,
+				BFA6615421E20DF90074CE92 /* TaskDetailViewController.swift */,
+				BFA6615621E20F000074CE92 /* SettingsTableViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		BFA6614F21E184540074CE92 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFA6615021E1848E0074CE92 /* TaskTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,13 +215,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA6615921E2114B0074CE92 /* CATransition.swift in Sources */,
+				BFA6615121E1848E0074CE92 /* TaskTableViewCell.swift in Sources */,
 				BF7528FD21E152960021E517 /* TaskTableViewController.swift in Sources */,
-				BF7528F421E093CF0021E517 /* DateHelper.swift in Sources */,
 				BF22892E21E0840600D7B163 /* Anchor+RGB.swift in Sources */,
 				BF22893321E08EAC00D7B163 /* TaskDataModel.xcdatamodeld in Sources */,
 				BF22893621E08F2100D7B163 /* Task.swift in Sources */,
 				BF22891821E0831900D7B163 /* AppDelegate.swift in Sources */,
+				BFA6615521E20DF90074CE92 /* TaskDetailViewController.swift in Sources */,
 				BFA6614E21E15DF50074CE92 /* Category.swift in Sources */,
+				BFA6615721E20F000074CE92 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
