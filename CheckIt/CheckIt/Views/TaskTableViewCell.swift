@@ -55,7 +55,7 @@ class TaskTableViewCell: UITableViewCell {
             dateWhenDone = "Date not set"
         }
         var categoryName = ""
-        if let categoryNameExist = taskToShow.category?.name {
+        if let categoryNameExist = taskToShow.category?.categoryName {
             categoryName = categoryNameExist
         } else {
             categoryName = "No category"
@@ -63,6 +63,7 @@ class TaskTableViewCell: UITableViewCell {
         
         if taskToShow.isItDone {
             accessoryType = .checkmark
+            tintColor = .black
             labelDescription.textColor = .lightGray
             let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: taskToShow.taskTitle)
             attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedString.length))
@@ -76,13 +77,11 @@ class TaskTableViewCell: UITableViewCell {
         }
         
         labelCategory.text = categoryName
-//        categoryStripeView.backgroundColor = #colorLiteral(red: 0.5823521081, green: 0.5717214529, blue: 1, alpha: 1)
         categoryStripeView.backgroundColor = taskToShow.category?.color
         labelDueDate.text = dateWhenDone
     }
     
     fileprivate func setupLayouts() {
-        
         addSubview(categoryStripeView)
         addSubview(labelDescription)
         addSubview(labelCategory)

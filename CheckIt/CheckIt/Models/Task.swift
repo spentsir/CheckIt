@@ -78,7 +78,7 @@ class Task {
     static func dateShouldBeDoneToString(date: Date?) -> String {
         if let tempDate = date {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy, HH:mm"
+            dateFormatter.dateFormat = "EEE, MMM d, h:mm a"
             return dateFormatter.string(from: tempDate)
         } else {
             return ""
@@ -88,7 +88,7 @@ class Task {
     
     class func dateShouldBeDoneFromString(dateString: String?) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy, HH:mm"
+        dateFormatter.dateFormat = "EEE, MMM d, h:mm a"
         if let tempDateString = dateString {
             if let date = dateFormatter.date(from: tempDateString) {
                 return date
@@ -163,7 +163,7 @@ class Task {
                 result.setValue(newTask.isItDone, forKey: "isItDone")
                 result.setValue(newTask.taskTitle, forKey: "taskTitle")
                 result.setValue(Task.dateShouldBeDoneToString(date: newTask.completionDate), forKey: "dueDate")
-                result.setValue(newTask.category?.name, forKey: "categoryName")
+                result.setValue(newTask.category?.categoryName, forKey: "categoryName")
                 
                 do {
                     try context.save()
@@ -189,7 +189,7 @@ class Task {
         let newTask = NSEntityDescription.insertNewObject(forEntityName: "Tasks", into: context)
         newTask.setValue(self.taskTitle, forKey: "taskTitle")
         newTask.setValue(Task.dateShouldBeDoneToString(date: self.completionDate), forKey: "dueDate")
-        newTask.setValue(self.category?.name, forKey: "categoryName")
+        newTask.setValue(self.category?.categoryName, forKey: "categoryName")
         newTask.setValue(self.isItDone, forKey: "isItDone")
         do {
             try context.save()

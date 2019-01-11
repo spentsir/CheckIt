@@ -10,11 +10,11 @@ import UIKit
 import CoreData
 
 class Category {
-    var name: String
+    var categoryName: String
     var color: UIColor
     
     init(nameOfCategory: String, colorOfCategory: UIColor) {
-        self.name = nameOfCategory
+        self.categoryName = nameOfCategory
         self.color = colorOfCategory
     }
     
@@ -60,7 +60,7 @@ class Category {
         let context = appDelegate.persistentContainer.viewContext
         
         let newTask = NSEntityDescription.insertNewObject(forEntityName: "Categories", into: context)
-        newTask.setValue(self.name, forKey: "categoryName")
+        newTask.setValue(self.categoryName, forKey: "categoryName")
         let colorData = self.color.encode()
         newTask.setValue(colorData, forKey: "color")
         
@@ -73,20 +73,49 @@ class Category {
         context.refreshAllObjects()
     }
     
-    // Replacing an old category with a new one
-    func modifyCategory(newCategory: Category) {
+    func deleteCategoryFromCoreData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Categories")
         request.returnsObjectsAsFaults = false
-        request.predicate = NSPredicate(format: "categoryName == %@", self.name)
+        request.predicate = NSPredicate(format: "categoryName == %@", self.categoryName)
+        
+        do {
+            let results = try context.fetch(request)
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    if (result.value(forKey: "categoryName") as? String) != nil {
+                        context.delete(result)
+                    }
+                    do {
+                        try context.save()
+                    }
+                    catch {
+                        print("Deleting category failed!")
+                    }
+                }
+            } else {
+                print("No Results: \(#function.description)")
+            }
+        } catch {
+            print("Couldn't fetch results: \(#function.description)")
+        }
+    }
+    
+    // Replacing an old category with a new one
+     func modifyCategory(newCategory: Category) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Categories")
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "categoryName == %@", self.categoryName)
         
         do {
             let results = try context.fetch(request)
             if results.count > 0 {
                 
                 let result = results[0] as! NSManagedObject
-                result.setValue(newCategory.name, forKey: "categoryName")
+                result.setValue(newCategory.categoryName, forKey: "categoryName")
                 let colorData = newCategory.color.encode()
                 result.setValue(colorData, forKey: "color")
                 do {
@@ -102,7 +131,7 @@ class Category {
         } catch {
             print("Couldn't fetch results")
         }
-        self.name = newCategory.name
+        self.categoryName = newCategory.categoryName
         self.color = newCategory.color
     }
 }
