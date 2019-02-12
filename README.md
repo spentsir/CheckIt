@@ -8,3 +8,4 @@ Swiping right on a task will allow you to complete the task.
 ![checkit](https://user-images.githubusercontent.com/38364867/52663897-f7f4e400-2ec4-11e9-8ccb-764dca25403e.gif)
 
 Feel free to download the app and play around with it.
+https://itunes.apple.com/us/app/check-it/id1449175110
